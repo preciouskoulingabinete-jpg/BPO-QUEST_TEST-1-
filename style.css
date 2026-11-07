@@ -1,0 +1,426 @@
+/* ==============================
+Reset & Base
+============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    font-family: 'Mighty Souly', sans-serif;
+}
+
+body {
+    background-color: #ead9c8;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
+}
+
+a:link{
+    color: #98e5ff;
+}
+
+a:visited{
+    color: rgb(132, 89, 67);
+}
+/* ==============================
+   Fonts
+============================== */
+@font-face {
+    font-family: 'Mighty Souly';
+    src: url('fonts/MightySouly-lxggD.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Paint Marker';
+    src: url('fonts/PaintMarker.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ==============================
+   Headings & Text
+============================== */
+h1,
+#text-box.title-font,
+.question-font {
+    font-family: 'Mighty Souly', sans-serif;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+#text-box.title-font {
+    font-size: 2em;
+    color: #fff0ae;
+    text-shadow: 1px 2px 3px #806650;
+}
+
+.question-font {
+    font-size: 1.5em;
+}
+
+#text-box {
+    font-size: 1.2em;
+    margin: 0 auto 30px auto;
+    width: min(700px, calc(100% - 32px));
+    max-width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+#text-box.results-active {
+    color: rgb(132, 89, 67);;
+    }
+
+.result-description {
+    font-family: 'Mighty Souly', sans-serif;
+    font-size: 0.7em;
+    line-height: 1.5;
+    margin-top: 16px;
+}
+
+/* ==============================
+   Overlay
+============================== */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(110, 167, 180, 0.5);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* ==============================
+   Site Header & Navigation
+============================== */
+.site-header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 5%;
+}
+
+.logo-placeholder {
+    display: grid;
+    place-items: center;
+    width: 150px;
+    min-height: 48px;
+    padding: 8px 12px;
+    border: 2px dashed #85664f;
+    border-radius: 10px;
+    background-color: #fff0ae;
+    color: #85664f;
+    font-size: 0.8em;
+}
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 6px;
+    border: 2px solid #85664f;
+    border-radius: 999px;
+    background-color: #e8f0f3;
+}
+
+.site-nav a,
+.site-nav a:link,
+.site-nav a:visited {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    color: #263746;
+    text-decoration: none;
+}
+
+.site-nav a:hover {
+    background-color: #a9cce3;
+}
+
+/* ==============================
+   Container
+============================== */
+#container {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding-top: 50px;
+    flex: 1 1 auto;
+}
+
+#container.intro-active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 0;
+}
+
+#container.results-active {
+  padding-top: 50px;
+  transition: padding-top 0.3s ease; 
+}
+/* ==============================
+   Buttons - Responsive
+============================== */
+button {
+    background-color: #a9cce3;
+    color: #263746;
+    padding: 10px 20px;
+    margin: 0 auto 15px auto;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 99px;
+    border: 1px solid #8fb8d3;
+    display: block;
+    font-family: 'Paint Marker', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    /* Default for desktops (large & Retina screens) */
+    width: clamp(200px, 35vw, 500px);
+    max-width: calc(100% - 32px);
+    line-height: 1.4;
+}
+
+/* Hover effect */
+button:hover {
+    background-color: #c5dced;
+    color: #263746;
+}
+
+/* Dialogue / Question variants */
+.dialogue-btn {
+    background-color: #a9cce3;
+}
+.question-btn {
+    background-color: #a9cce3;
+}
+
+/* ==============================
+   Dialogue Scenes & Creator Notes
+============================== */
+.dialogue-scene,
+#text-box.dialogue-scene {
+    background-color: #e8f0f3;
+    color: #85664f;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #bfd2dc;
+    margin: 0 auto 30px auto;
+    width: min(700px, calc(100% - 32px));
+    max-width: 100%;
+}
+
+.creator-note {
+    background: white;
+    border: 2px solid black;
+    padding: 15px;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto 15px auto;
+    max-width: 600px;
+}
+
+/* ==============================
+   Images
+============================== */
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+#text-box.results-active + #buttons button {
+    width: clamp(150px, 25%, 300px); /* smaller than normal buttons */
+    margin: 10px auto;
+}
+
+/* Result image bigger */
+.cat-result {
+    height: auto;
+    display: block;
+    margin: 20px auto 30px auto;
+    max-width: 100%;
+}
+
+
+#image img {
+    display: block;
+    width: min(100%, 300px);
+    height: auto;
+    max-height: 60vh;
+    object-fit: contain;
+    margin: 0 auto 20px;
+}
+
+/* Dialogue images modal */
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#modal-img {
+    max-width: 80%;
+    max-height: 80%;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+#close-modal {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 40px;
+    color: white;
+    font-family: 'Mighty Souly', sans-serif;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+/* ==============================
+   Cat Gallery
+============================== */
+.cat-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+    justify-content: center;
+    gap: 15px;
+    width: min(900px, calc(100% - 32px));
+    margin: 20px auto 40px auto;
+    align-items: flex-end;
+    background: #FFFEF8;
+    padding: clamp(12px, 3vw, 30px);
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.cat-card {
+    text-align: center;
+}
+
+.cat-card img {
+    width: min(100%, 150px);
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.2s;
+}
+
+.cat-card img:hover {
+    transform: scale(1.1);
+}
+
+/* ==============================
+   Footer
+============================== */
+footer {
+    text-align: center;
+    padding: 18px 5% 24px;
+    border-top: 2px solid #a9cce3;
+    background-color: #e8f0f3;
+    font-size: 0.8em;
+    color: #333;
+}
+
+/* ==============================
+   Fade-In Animations
+============================== */
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.fade-in.show {
+    opacity: 1;
+}
+
+/* ==============================
+   Media Queries (Mobile / Tablet)
+============================== */
+@media (max-width: 768px) {
+
+    /* Container */
+    #container {
+        padding-top: 30px;
+    }
+
+    .site-header {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 12px 4%;
+    }
+
+    .logo-placeholder {
+        width: 120px;
+        min-height: 42px;
+        font-size: 0.7em;
+    }
+
+    .site-nav {
+        width: 100%;
+        border-radius: 20px;
+        gap: 2px;
+        padding: 4px;
+    }
+
+    .site-nav a,
+    .site-nav a:link,
+    .site-nav a:visited {
+        flex: 1 1 auto;
+        padding: 7px 8px;
+    }
+
+    /* Creator notes */
+    #text-box .creator-note {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+@media (max-width: 420px) {
+    .site-header {
+        gap: 10px;
+    }
+
+    .site-nav a,
+    .site-nav a:link,
+    .site-nav a:visited {
+        flex-basis: 28%;
+    }
+
+    button {
+        width: calc(100% - 32px);
+    }
+}
